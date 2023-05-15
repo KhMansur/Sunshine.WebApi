@@ -24,6 +24,6 @@ namespace Sunshine.Service.DTOs
 
         public string Address { get; set; }
 
-        public double SalaryPercentage { get; set; }
+        public double SalaryPercentages { get; set; }
     }
 }
