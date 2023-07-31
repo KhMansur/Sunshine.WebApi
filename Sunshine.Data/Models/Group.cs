@@ -24,6 +24,10 @@ namespace Sunshine.Data.Models
 
         public string EndTime { get; set; }
 
+        public DateTime? CreatedTime { get; set; }
+
+
+
         public IList<Student> Students { get; set; }
 
         public Course Course { get; set; }

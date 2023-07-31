@@ -32,6 +32,10 @@ namespace Sunshine.Data.DBContext
 
         public DbSet<Chat> Chats { get; set; }
 
+        public DbSet<Attendence> Attendences { get; set; }
+
+        public DbSet<AttendencePerDay> AttendencesPerDay { get; set; } 
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new RoleConfiguration());

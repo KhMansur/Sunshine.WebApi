@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Sunshine.Data.Models;
 using Sunshine.Service.DTOs;
+using Sunshine.Service.DTOs.TeacherPayment;
 
 namespace Sunshine.WebApi.Configurations
 {
@@ -64,6 +65,9 @@ namespace Sunshine.WebApi.Configurations
             CreateMap<ApiUser, UserDto>().ReverseMap();
             #endregion
 
+            #region TeacherPayment
+            CreateMap<TeacherPaymentAddDto, TeacherPayment>().ReverseMap();
+            #endregion
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Sunshine.Data.Models;
 using Sunshine.Service.DTOs;
 using Sunshine.Service.IRepositories;
@@ -12,9 +13,12 @@ namespace Sunshine.WebApi.Services
         IGroupRepository groupRepository;
         IMapper mapper;
 
-        public StudentPaymentService(IStudentPaymentRepository studentPaymentRepository)
+        public StudentPaymentService(IStudentPaymentRepository studentPaymentRepository, IStudentRepository studentRepository, IGroupRepository groupRepository, IMapper mapper)
         {
             this.studentPaymentRepository = studentPaymentRepository;
+            this.studentRepository = studentRepository;
+            this.groupRepository = groupRepository;
+            this.mapper = mapper;
         }
 
         public async Task AddStudentPayment(StudentPaymentAddDto studentPaymentAddDto)
@@ -22,6 +26,10 @@ namespace Sunshine.WebApi.Services
             var studentPayment = mapper.Map<StudentPayment>(studentPaymentAddDto);
             studentPayment.isCalculated = false;
             studentPayment.RecievedTime = DateTime.Now;
+            var student = await studentRepository.GetById(studentPaymentAddDto.StudentId);
+            var group = await groupRepository.GetById(studentPaymentAddDto.GroupId);
+            var attendence = student.Attendence.FirstOrDefault(attendence => attendence.Group.Id == studentPaymentAddDto.GroupId);
+            attendence.PaidDays += studentPaymentAddDto.PerDays;
             if (studentPayment is not null)
             {
                 await studentPaymentRepository.Add(studentPayment);

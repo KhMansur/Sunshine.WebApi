@@ -13,6 +13,8 @@ namespace Sunshine.Service.DTOs
 
         public Guid StudentId { get; set; }
 
+        public int PerDays { get; set; }
+
         public Guid GroupId { get; set; }
 
         public string? Description { get; set; }

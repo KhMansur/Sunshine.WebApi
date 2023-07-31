@@ -30,6 +30,8 @@ namespace Sunshine.Data.Models
 
         public DateTime? CreatedTime { get; set; }
 
+        public IList<Attendence> Attendence { get; set; }
+
         public IList<Group> Groups { get; set; }
 
         public IList<StudentPayment> Payments { get; set; }
@@ -39,6 +41,7 @@ namespace Sunshine.Data.Models
             IsPrivileged = false;
             Groups = new List<Group>();
             Payments = new List<StudentPayment>();
+            Attendence = new List<Attendence>();
         }
     }
 }

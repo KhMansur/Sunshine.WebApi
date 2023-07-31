@@ -6,22 +6,21 @@ using System.Threading.Tasks;
 
 namespace Sunshine.Data.Models
 {
-    public class StudentPayment
+    public class Attendence
     {
         public Guid Id { get; set; }
 
-        public int Amount { get; set; }
-
-        public DateTime RecievedTime { get; set; }
-        
         public Student Student { get; set; }
-
-        public int PerDays { get; set; }
 
         public Group Group { get; set; }
 
-        public string? Description { get; set; }
+        public int PaidDays { get; set; }
 
-        public bool isCalculated { get; set; }
+        public IList<AttendencePerDay> AttendencePerDay { get; set; }
+
+        public Attendence()
+        {
+            AttendencePerDay = new List<AttendencePerDay>();
+        }
     }
 }

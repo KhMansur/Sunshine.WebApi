@@ -1,10 +1,11 @@
 ﻿using Sunshine.Data.Models;
+using Sunshine.Service.DTOs.TeacherPayment;
 
 namespace Sunshine.WebApi.Services
 {
     public interface ITeacherPaymentService
     {
-        Task AddTeacherPayment(TeacherPayment TeacherPayment);
+        Task AddTeacherPayment(TeacherPaymentAddDto teacherPaymentAddDto);
 
         Task UpdateTeacherPayment(Guid Id, TeacherPayment TeacherPayment);
 

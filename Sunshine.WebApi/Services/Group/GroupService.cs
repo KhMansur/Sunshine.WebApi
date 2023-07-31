@@ -30,6 +30,7 @@ namespace Sunshine.WebApi.Services
             var course = await courseRepository.GetById(groupAddDto.CourseId);
             group.Course = course;
             group.Teacher = await teacherRepository.GetById(groupAddDto.TeacherId);
+            group.CreatedTime = DateTime.Now;
             if (group is not null)
             {
                 await groupRepository.Add(group);
